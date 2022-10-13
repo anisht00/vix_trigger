@@ -313,14 +313,12 @@ def fomo_calc():
 
 stock = st.text_input('Choose your stock. Must be the stock ticker')
 st.write('See what you could have made if you followed the vix index trigger')
-trigger_2019 = st.button('From 01.01.2019 - 31.12.2019')
-trigger_2020 = st.button('From 01.01.2020 - 31.12.2020')
-trigger_2021 = st.button('From 01.01.2021 - 17.06.2021')
+trigger = st.date_input()
 
-if trigger_2019:
-    buy_sell_dict = buy_sell_dict_2019
-    start = st.date
-    end = '2019-12-31'
+if trigger:
+    date_start = st.date_input()
+    date_end = st.date_input()
+    buy_sell_dict = calculate_buy_sell_dict(date_start, date_end)
     result_3 = fomo_calc()
     if result_3 > 0:
         st.write(f'If you followed the VIX index trigger you would have made {result_3:.2f}$')
