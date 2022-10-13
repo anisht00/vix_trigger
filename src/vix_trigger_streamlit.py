@@ -297,19 +297,19 @@ def fomo_calc():
     return sum(profit)
 
 
-buy_sell_dict_2019 = {'2019-01-15': 'Sell', '2019-01-16': 'Sell', '2019-02-12': 'Sell', '2019-02-21': 'Sell',
-                      '2019-02-25': 'Sell', '2019-03-04': 'Sell', '2019-03-08': 'Buy', '2019-03-14': 'Sell',
-                      '2019-03-19': 'Sell', '2019-04-17': 'Sell', '2019-05-09': 'Buy', '2019-06-20': 'Sell',
-                      '2019-07-05': 'Sell', '2019-07-25': 'Sell', '2019-08-02': 'Buy', '2019-11-05': 'Sell'}
-
-buy_sell_dict_2020 = {'2020-02-28': 'Buy', '2020-03-06': 'Buy', '2020-03-13': 'Buy', '2020-03-17': 'Buy',
-                      '2020-04-28': 'Sell', '2020-05-12': 'Sell', '2020-06-12': 'Buy', '2020-06-15': 'Buy',
-                      '2020-07-21': 'Sell', '2020-07-23': 'Sell', '2020-08-11': 'Sell', '2020-09-04': 'Buy',
-                      '2020-10-29': 'Buy', '2020-11-09': 'Sell', '2020-11-18': 'Sell'}
-
-buy_sell_dict_2021 = {'2021-01-29': 'Buy', '2021-02-09': 'Sell', '2021-02-10': 'Sell', '2021-03-18': 'Sell',
-                      '2021-03-23': 'Sell', '2021-04-08': 'Sell', '2021-04-14': 'Sell', '2021-05-13': 'Buy',
-                      '2021-06-01': 'Sell', '2021-06-08': 'Sell', '2021-06-14': 'Sell'}
+# buy_sell_dict_2019 = {'2019-01-15': 'Sell', '2019-01-16': 'Sell', '2019-02-12': 'Sell', '2019-02-21': 'Sell',
+#                       '2019-02-25': 'Sell', '2019-03-04': 'Sell', '2019-03-08': 'Buy', '2019-03-14': 'Sell',
+#                       '2019-03-19': 'Sell', '2019-04-17': 'Sell', '2019-05-09': 'Buy', '2019-06-20': 'Sell',
+#                       '2019-07-05': 'Sell', '2019-07-25': 'Sell', '2019-08-02': 'Buy', '2019-11-05': 'Sell'}
+#
+# buy_sell_dict_2020 = {'2020-02-28': 'Buy', '2020-03-06': 'Buy', '2020-03-13': 'Buy', '2020-03-17': 'Buy',
+#                       '2020-04-28': 'Sell', '2020-05-12': 'Sell', '2020-06-12': 'Buy', '2020-06-15': 'Buy',
+#                       '2020-07-21': 'Sell', '2020-07-23': 'Sell', '2020-08-11': 'Sell', '2020-09-04': 'Buy',
+#                       '2020-10-29': 'Buy', '2020-11-09': 'Sell', '2020-11-18': 'Sell'}
+#
+# buy_sell_dict_2021 = {'2021-01-29': 'Buy', '2021-02-09': 'Sell', '2021-02-10': 'Sell', '2021-03-18': 'Sell',
+#                       '2021-03-23': 'Sell', '2021-04-08': 'Sell', '2021-04-14': 'Sell', '2021-05-13': 'Buy',
+#                       '2021-06-01': 'Sell', '2021-06-08': 'Sell', '2021-06-14': 'Sell'}
 
 stock = st.text_input('Choose your stock. Must be the stock ticker')
 st.write('See what you could have made if you followed the vix index trigger')
@@ -319,7 +319,7 @@ trigger_2021 = st.button('From 01.01.2021 - 17.06.2021')
 
 if trigger_2019:
     buy_sell_dict = buy_sell_dict_2019
-    start = '2019-01-01'
+    start = st.date
     end = '2019-12-31'
     result_3 = fomo_calc()
     if result_3 > 0:
@@ -327,22 +327,3 @@ if trigger_2019:
     else:
         st.write(f'If you followed the VIX index trigger you would have lost {result_3:.2f}$')
 
-elif trigger_2020:
-    buy_sell_dict = buy_sell_dict_2020
-    start = '2020-01-01'
-    end = '2020-12-31'
-    result_3 = fomo_calc()
-    if result_3 > 0:
-        st.write(f'If you followed the VIX index trigger you would have made {result_3:.2f}$')
-    else:
-        st.write(f'If you followed the VIX index trigger you would have lost {result_3:.2f}$')
-
-elif trigger_2021:
-    buy_sell_dict = buy_sell_dict_2021
-    start = '2021-01-01'
-    end = '2021-06-17'
-    result_3 = fomo_calc()
-    if result_3 > 0:
-        st.write(f'If you followed the VIX index trigger you would have made {result_3:.2f}$')
-    else:
-        st.write(f'If you followed the VIX index trigger you would have lost {result_3:.2f}$')
