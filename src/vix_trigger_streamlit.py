@@ -316,8 +316,8 @@ st.write('See what you could have made if you followed the vix index trigger')
 trigger = st.date_input()
 
 if trigger:
-    date_start = st.date_input()
-    date_end = st.date_input()
+    date_start = st.date_input("Enter the date you want to buy the stock")
+    date_end = st.date_input("Enter the date you want to sell the stock")
     buy_sell_dict = calculate_buy_sell_dict(date_start, date_end)
     result_3 = fomo_calc()
     if result_3 > 0:
